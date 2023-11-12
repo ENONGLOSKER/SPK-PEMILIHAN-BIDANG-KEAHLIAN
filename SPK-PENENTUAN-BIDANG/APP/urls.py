@@ -13,5 +13,14 @@ urlpatterns = [
     path('kriteria/create/', views.create_kriteria, name='create_kriteria'),
     path('kriteria/update/<int:pk>', views.update_kriteria, name='update_kriteria'),
     path('kriteria/delete/<int:pk>', views.delete_kriteria, name='delete_kriteria'),
-    # kriteria
+    # gap
+    path('gap/', views.gap, name='gap'),
+    path('gap/create/', views.create_gap, name='create_gap'),
+    path('gap/update/<int:pk>', views.update_gap, name='update_gap'),
+    path('gap/delete/<int:pk>', views.delete_gap, name='delete_gap'),
+    # penilaian
+    path('penilaian/', views.penilaian, name='penilaian'),
+    path('penilaian/create/', views.create_penilaian, name='create_penilaian'),
+    path('penilaian/update/<int:pk>', views.update_penilaian, name='update_penilaian'),
+    path('penilaian/delete/<int:pk>', views.delete_penilaian, name='delete_penilaian'),
 ]

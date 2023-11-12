@@ -20,8 +20,18 @@ class Kriteria(models.Model):
 #gap
 class Gap(models.Model):
     nilai = models.IntegerField()
-    gap  = models.IntegerField()
+    gap  = models.FloatField()
     
     def __str__(self):
         return str(self.nilai)
 #penilaian
+class Penilaian(models.Model):
+    penilaian_alternatif = models.ForeignKey(Alternatif, on_delete=models.CASCADE)
+    penilaian_kriteria1 = models.IntegerField(default=0)
+    penilaian_kriteria2 = models.IntegerField(default=0)
+    penilaian_kriteria3 = models.IntegerField(default=0)
+    penilaian_kriteria4 = models.IntegerField(default=0)
+    penilaian_kriteria5 = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.penilaian_alternatif)

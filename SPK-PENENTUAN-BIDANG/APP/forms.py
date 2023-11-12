@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import Alternatif,Kriteria
+from .models import Alternatif,Kriteria,Gap, Penilaian
 
 class AlternatifForm(forms.ModelForm):
     class Meta:
@@ -42,3 +42,38 @@ class KriteriaForm(forms.ModelForm):
         cleaned_data['nama_kriteria'] = nama_kriteria.upper() if nama_kriteria else None
 
         return cleaned_data
+
+class GapForm(forms.ModelForm):
+    class Meta:
+        model = Gap
+        fields =  ['nilai', 'gap']
+        widgets = {
+            'nilai': forms.TextInput(attrs={'class': 'form-control'}),
+            'gap': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class PenilaianForm(forms.ModelForm):
+    nilai_kriteria_CHOICES = [
+            ('0','0'),
+            ('1','1'),
+            ('2','2'),
+            ('3','3'),
+            ('4','4'),
+        ]
+    penilaian_kriteria1 = forms.ChoiceField(choices=nilai_kriteria_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    penilaian_kriteria2 = forms.ChoiceField(choices=nilai_kriteria_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    penilaian_kriteria3 = forms.ChoiceField(choices=nilai_kriteria_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    penilaian_kriteria4 = forms.ChoiceField(choices=nilai_kriteria_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    penilaian_kriteria5 = forms.ChoiceField(choices=nilai_kriteria_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Penilaian
+        fields =  ['penilaian_alternatif', 'penilaian_kriteria1', 'penilaian_kriteria2', 'penilaian_kriteria3', 'penilaian_kriteria4', 'penilaian_kriteria5']
+        widgets = {
+            'penilaian_alternatif': forms.Select(attrs={'class': 'form-control'}),
+            'penilaian_kriteria1': forms.NumberInput(attrs={'class': 'form-control'}),
+            'penilaian_kriteria2': forms.NumberInput(attrs={'class': 'form-control'}),
+            'penilaian_kriteria3': forms.NumberInput(attrs={'class': 'form-control'}),
+            'penilaian_kriteria4': forms.NumberInput(attrs={'class': 'form-control'}),
+            'penilaian_kriteria5': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
