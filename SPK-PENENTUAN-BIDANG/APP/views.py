@@ -11,25 +11,76 @@ def penilaian(request):
     kriterias = Kriteria.objects.all()
     penilaians = Penilaian.objects.all()
 
-    # Inisialisasi dictionary untuk menyimpan hasil perhitungan
     hasil_perhitungan = {}
-
-    # Looping untuk setiap kriteria
     for kriteria in kriterias:
  
         nilai_target = kriteria.nilai_target
         hasil_pengurangan = []
 
+        for penilaian in penilaians:
+            nilai_kriteria = getattr(penilaian, f'penilaian_kriteria{kriteria.pk}')
+            hasil_pengurangan.append(nilai_kriteria - nilai_target)
+
+        hasil_perhitungan[kriteria.nama_kriteria] = hasil_pengurangan
+
+    # Inisialisasi dictionary untuk menyimpan hasil perhitungan
+    konversi_hasil_perhitungan = {}
+
+
+    # Looping untuk setiap kriteria
+    for kriteria in kriterias:
+        # Ambil nilai target kriteria
+        nilai_target = kriteria.nilai_target
+
+        # Inisialisasi list untuk menyimpan hasil pengurangan
+        konversi_hasil_pengurangan = []
+        
         # Looping untuk setiap data penilaian
         for penilaian in penilaians:
             # Ambil nilai kriteria untuk penilaian tertentu
             nilai_kriteria = getattr(penilaian, f'penilaian_kriteria{kriteria.pk}')
-            # print(nilai_kriteria)
             # Hitung hasil pengurangan
-            hasil_pengurangan.append(nilai_kriteria - nilai_target)
+
+            hasil = nilai_kriteria - nilai_target
+            # print(hasil)
+            # Sesuaikan hasil dengan nilai pada template
+            if hasil == 0:
+                konversi_hasil_pengurangan.append("5")
+            elif hasil == 1:
+                konversi_hasil_pengurangan.append("4,5")
+            elif hasil == -1:
+                konversi_hasil_pengurangan.append("4")
+            elif hasil == 2:
+                konversi_hasil_pengurangan.append("3,5")
+            elif hasil == -2:
+                konversi_hasil_pengurangan.append("3")
+            elif hasil == 3:
+                konversi_hasil_pengurangan.append("2,5")
+            elif hasil == -3:
+                konversi_hasil_pengurangan.append("2")
+            elif hasil == 4:
+                konversi_hasil_pengurangan.append("1,5")
+            elif hasil == -4:
+                konversi_hasil_pengurangan.append("1")
 
         # Simpan hasil pengurangan ke dictionary
-        hasil_perhitungan[kriteria.nama_kriteria] = hasil_pengurangan
+        konversi_hasil_perhitungan[kriteria.nama_kriteria] = konversi_hasil_pengurangan
+
+    print(konversi_hasil_perhitungan)
+    
+    tes1_values = konversi_hasil_perhitungan['TES 1 ( PENGETAHUAN DASAR )']
+    tes2_values = konversi_hasil_perhitungan['TES 2 ( LOGIKA MATEMATIKA )']
+
+    print("TES 1 Values:", tes1_values)
+    print("TES 2 Values:", tes2_values)
+
+    for x in range(5):
+        a = float(tes1_values[x])
+        b = float(tes2_values[x])
+        
+        data = (a+b)/2
+        print(x, data)
+
 
     context = {
         'penilaian':penilaians,
@@ -37,6 +88,7 @@ def penilaian(request):
         'alternatif':alternatif,
         'kriteria':kriterias,
         'hasil_perhitungan': hasil_perhitungan,
+        'konversi_hasil_perhitungan': konversi_hasil_perhitungan,
     }
     
     return render(request,'penilaian.html',context)

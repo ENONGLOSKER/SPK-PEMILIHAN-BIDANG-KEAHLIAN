@@ -286,6 +286,7 @@
                     </div>                               
                 </div>
             </div>
+            
             <!-- Area tabel pemetaan gap -->
             <div class="col-xl-12 col-lg-9 mt-5">
                 <div class="card shadow mb-UKM 4">
@@ -307,36 +308,33 @@
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        {% for kriteria, hasil_pengurangan in hasil_perhitungan.items %}
+                                        {% for kriteria, konversi_hasil_pengurangan in konversi_hasil_perhitungan.items %}
                                             <tr>
                                             <td class="text-center">{{ forloop.counter }}</td>
                                             <td>{{ kriteria }}</td>
-                                            {% for hasil in hasil_pengurangan %}
-                                                {%if hasil == 0 %}
-                                                <td class="text-center">5</td>
-                                                {%elif hasil == 1 %}
-                                                <td class="text-center">4,5</td>
-                                                {%elif hasil == -1 %}
-                                                <td class="text-center">4</td>
-                                                {%elif hasil == 2 %}
-                                                <td class="text-center">3,5</td>
-                                                {%elif hasil == -2 %}
-                                                <td class="text-center">3</td>
-                                                {%elif hasil == 3 %}
-                                                <td class="text-center">2,5</td>
-                                                {%elif hasil == -3 %}
-                                                <td class="text-center">2</td>
-                                                {%elif hasil == 4 %}
-                                                <td class="text-center">1,5</td>
-                                                {%elif hasil == -4 %}
-                                                <td class="text-center">1</td>
-                                                {%endif%}
+                                            {% for hasil in konversi_hasil_pengurangan %}
+                                                <td class="text-center">{{ hasil }}</td>
                                             {% endfor %}
                                             </tr>
                                         {% endfor %}
                                     </tbody>
                             </table>
                                 
+                        </div>
+                    </div>                               
+                </div>
+            </div>
+
+            <!-- Area tabel pemetaan gap -->
+            <div class="col-xl-12 col-lg-9 mt-5">
+                <div class="card shadow mb-UKM 4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
+                        </div>
+                        <div class="card-body table-responsive">
+                           
                         </div>
                     </div>                               
                 </div>
