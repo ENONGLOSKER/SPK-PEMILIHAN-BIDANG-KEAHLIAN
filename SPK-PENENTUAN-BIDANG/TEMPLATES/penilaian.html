@@ -193,7 +193,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data penilaian</h6>
                         </div>
                         <div class="card-body table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -255,7 +255,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP</h6>
                         </div>
                         <div class="card-body table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -293,7 +293,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP</h6>
                         </div>
                         <div class="card-body table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -331,7 +331,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data rata-rata nilai faktor</h6>
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -346,18 +346,33 @@
                                     </tr>
                                 </thead>
                                 <tbody >
-                                    {% for hasil in hasil_avarage_cf %}
-                                        <tr>
-                                            <td class="text-center">{{ forloop.counter }}</td>
-                                            <td>{{ hasil }}</td>                                            
-                                        </tr>
-                                    {% endfor %}
+                                    <tr class="text-center">
+                                        <td >1</td>
+                                        <td class="text-left">CORE FACTOR</td>
+                                        {% for hasil1 in hasil_avarage_cf %}
+                                            <td>{{ hasil1 }}</td>                                            
+                                        {% endfor %}
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td >2</td>
+                                        <td class="text-left">SECONDERY FACTOR</td>
+                                        {% for hasil2 in hasil_avarage_sf %}
+                                            <td>{{ hasil2 }}</td>                                            
+                                        {% endfor %}
+                                    </tr>
+                                    <tr class="text-center">                                        
+                                        <td class="table-primary fw-bold" colspan="2">TOTAL NILAI</td>
+                                        {% for nilai in nilaia_total %}
+                                            <td>{{ nilai }}</td>                                            
+                                        {% endfor %}
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>                               
                 </div>
             </div>
+          
         </div>
 
     </div>

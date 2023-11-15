@@ -75,18 +75,34 @@ def penilaian(request):
         a = float(tes1_values[x])
         b = float(tes2_values[x])
         data_cf = (a+b)/2
-        hasil_avarage_cf.append(data_cf)
+
+        hasil_avarage_cf.append(round(data_cf, 2))
         # SF
         c = float(tes3_values[x])
         d = float(tes4_values[x])
         e = float(tes5_values[x])
         data_sf = (c+d+e)/3
-        hasil_avarage_sf.append(data_sf)
+
+        hasil_avarage_sf.append(round(data_sf, 2))
         
     print("CORE FACTOR",hasil_avarage_cf)
     print("SECONDERY FACTOR",hasil_avarage_sf)
 
+    nilaia_total = []
+
+    for x in range(len(hasil_avarage_cf)):
+
+        nt_cf = (60/100)* hasil_avarage_cf[x]
+        nt_sf = (40/100)* hasil_avarage_sf[x]
+
+        nt = nt_cf + nt_sf
+        nilaia_total.append(nt)
+
+    print("nilai total = ", nilaia_total)
+  
+
     context = {
+        'nilaia_total':nilaia_total,
         'hasil_avarage_cf':hasil_avarage_cf,
         'hasil_avarage_sf':hasil_avarage_sf,
         'penilaian':penilaians,
