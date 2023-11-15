@@ -3,8 +3,8 @@
     <h1>PEMILIHAN BIDANG KEAHLIAN</h1>
     <span>✨⭐⭐⭐✨</span>
     <hr>
-
-    ## Setup Project
+</div>
+## Setup Project
     <strong>Instalasi</strong>
 
     - 📍&nbsp;&nbsp;[Install Python (Python Official)](https://www.python.org/)
@@ -33,4 +33,3 @@
     python manage.py runserver
     ```
     <br>
-</div>
