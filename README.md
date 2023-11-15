@@ -3,7 +3,7 @@
     <h1>PEMILIHAN BIDANG KEAHLIAN</h1>
     <span>✨⭐⭐⭐✨</span>
     <hr>
-    <img src="./STATIC/img/SPK-PROFILE-MATCHING.png"/>
+    <img src="SPK-PENENTUAN-BIDANG/STATIC/img/SPK-PROFILE-MATCHING.png"/>
     <br>
 </div>
 
