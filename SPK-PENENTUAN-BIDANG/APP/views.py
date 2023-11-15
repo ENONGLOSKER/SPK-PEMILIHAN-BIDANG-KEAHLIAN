@@ -23,66 +23,72 @@ def penilaian(request):
 
         hasil_perhitungan[kriteria.nama_kriteria] = hasil_pengurangan
 
-    # Inisialisasi dictionary untuk menyimpan hasil perhitungan
     konversi_hasil_perhitungan = {}
-
-
-    # Looping untuk setiap kriteria
     for kriteria in kriterias:
-        # Ambil nilai target kriteria
         nilai_target = kriteria.nilai_target
-
-        # Inisialisasi list untuk menyimpan hasil pengurangan
         konversi_hasil_pengurangan = []
-        
-        # Looping untuk setiap data penilaian
         for penilaian in penilaians:
-            # Ambil nilai kriteria untuk penilaian tertentu
             nilai_kriteria = getattr(penilaian, f'penilaian_kriteria{kriteria.pk}')
-            # Hitung hasil pengurangan
-
             hasil = nilai_kriteria - nilai_target
-            # print(hasil)
-            # Sesuaikan hasil dengan nilai pada template
             if hasil == 0:
-                konversi_hasil_pengurangan.append("5")
+                konversi_hasil_pengurangan.append(5)
             elif hasil == 1:
-                konversi_hasil_pengurangan.append("4,5")
+                konversi_hasil_pengurangan.append(4.5)
             elif hasil == -1:
-                konversi_hasil_pengurangan.append("4")
+                konversi_hasil_pengurangan.append(4)
             elif hasil == 2:
-                konversi_hasil_pengurangan.append("3,5")
+                konversi_hasil_pengurangan.append(3.5)
             elif hasil == -2:
-                konversi_hasil_pengurangan.append("3")
+                konversi_hasil_pengurangan.append(3)
             elif hasil == 3:
-                konversi_hasil_pengurangan.append("2,5")
+                konversi_hasil_pengurangan.append(2.5)
             elif hasil == -3:
-                konversi_hasil_pengurangan.append("2")
+                konversi_hasil_pengurangan.append(2)
             elif hasil == 4:
-                konversi_hasil_pengurangan.append("1,5")
+                konversi_hasil_pengurangan.append(1.5)
             elif hasil == -4:
-                konversi_hasil_pengurangan.append("1")
-
-        # Simpan hasil pengurangan ke dictionary
+                konversi_hasil_pengurangan.append(1)
         konversi_hasil_perhitungan[kriteria.nama_kriteria] = konversi_hasil_pengurangan
 
     print(konversi_hasil_perhitungan)
     
+    # nilai rata-rata core factor
     tes1_values = konversi_hasil_perhitungan['TES 1 ( PENGETAHUAN DASAR )']
     tes2_values = konversi_hasil_perhitungan['TES 2 ( LOGIKA MATEMATIKA )']
+    # nilai rata-rata secondery factor
+    tes3_values = konversi_hasil_perhitungan['TES 3 ( PENGETAHUAN PROGRAMMING )']
+    tes4_values = konversi_hasil_perhitungan['TES 4 ( PENGETAHUAN JARINGAN & IOT )']
+    tes5_values = konversi_hasil_perhitungan['TES 5 ( PENGETAHUAN MULTIMEDIA )']
 
     print("TES 1 Values:", tes1_values)
     print("TES 2 Values:", tes2_values)
 
-    for x in range(5):
+    print("TES 3 Values:", tes3_values)
+    print("TES 4 Values:", tes4_values)
+    print("TES 5 Values:", tes5_values)
+
+    hasil_avarage_cf = []
+    hasil_avarage_sf = []
+
+    for x in range(len(tes1_values)):
+        # CF
         a = float(tes1_values[x])
         b = float(tes2_values[x])
+        data_cf = (a+b)/2
+        hasil_avarage_cf.append(data_cf)
+        # SF
+        c = float(tes3_values[x])
+        d = float(tes4_values[x])
+        e = float(tes5_values[x])
+        data_sf = (c+d+e)/3
+        hasil_avarage_sf.append(data_sf)
         
-        data = (a+b)/2
-        print(x, data)
-
+    print("CORE FACTOR",hasil_avarage_cf)
+    print("SECONDERY FACTOR",hasil_avarage_sf)
 
     context = {
+        'hasil_avarage_cf':hasil_avarage_cf,
+        'hasil_avarage_sf':hasil_avarage_sf,
         'penilaian':penilaians,
         'penilaias':penilaians,
         'alternatif':alternatif,

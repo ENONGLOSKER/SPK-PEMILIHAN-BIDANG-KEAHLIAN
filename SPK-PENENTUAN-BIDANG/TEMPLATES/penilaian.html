@@ -334,7 +334,26 @@
                             <h6 class="m-0 font-weight-bold text-primary">Data pemetaan GAP UKM ITC</h6>
                         </div>
                         <div class="card-body table-responsive">
-                           
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>No</th>
+                                        <th>Alternatif</th>
+                                        {%for data in penilaian %}
+                                        <th>{{data.penilaian_alternatif}}</th>
+                                        {%endfor%}
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    {% for hasil in hasil_avarage_cf %}
+                                        <tr>
+                                            <td class="text-center">{{ forloop.counter }}</td>
+                                            <td>{{ hasil }}</td>                                            
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>                               
                 </div>
