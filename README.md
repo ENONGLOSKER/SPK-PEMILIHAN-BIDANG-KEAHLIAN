@@ -4,32 +4,35 @@
     <span>✨⭐⭐⭐✨</span>
     <hr>
 </div>
-## Setup Project
+<div class="" align="left">
+    ## Setup Project
     <strong>Instalasi</strong>
 
     - 📍&nbsp;&nbsp;[Install Python (Python Official)](https://www.python.org/)
     - 📗&nbsp;&nbsp;Clone repository
     ```bash
-    git clone https://github.com/ENONGLOSKER/SPK-PEMILIHAN-BIDANG-KEAHLIAN
+        git clone https://github.com/ENONGLOSKER/SPK-PEMILIHAN-BIDANG-KEAHLIAN
     ```
     - 📁&nbsp;&nbsp;Buat env
     ```bash
-    python -m venv env
+        python -m venv env
     ```
     - 📁&nbsp;&nbsp;Aktifkan env
     ```bash
-    env\Scripts\activate
+        env\Scripts\activate
     ```
     - 📁&nbsp;&nbsp;Masuk ke Folder
     ```bash
-    cd SPK-PEMILIHAN-BIDANG-KEAHLIAN
+        cd SPK-PEMILIHAN-BIDANG-KEAHLIAN
     ```
     - 📁&nbsp;&nbsp;Install requirements
     ```bash
-    pip install -r requirement.txt
+        pip install -r requirement.txt
     ```
     - 📁&nbsp;&nbsp;Run Server
     ```bash
-    python manage.py runserver
+        python manage.py runserver
     ```
     <br>
+
+</div>
