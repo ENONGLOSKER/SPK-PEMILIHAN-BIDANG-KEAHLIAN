@@ -96,8 +96,8 @@ def penilaian(request):
         nt_sf = (40/100)* hasil_avarage_sf[x]
 
         nt = nt_cf + nt_sf
-        nilaia_total.append(nt)
-
+        nilaia_total.append(round(nt,2))
+       
     print("nilai total = ", nilaia_total)
   
 
