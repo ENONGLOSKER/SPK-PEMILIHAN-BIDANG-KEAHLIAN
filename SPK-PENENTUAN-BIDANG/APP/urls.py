@@ -4,6 +4,7 @@ app_name="APP"
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     path('alternatif/', views.alternatif, name='alternatif'),
     path('alternatif/create/', views.create_alternatif, name='create_alternatif'),
     path('alternatif/update/<int:pk>', views.update_alternatif, name='update_alternatif'),

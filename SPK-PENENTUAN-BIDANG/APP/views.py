@@ -5,6 +5,10 @@ from .forms import AlternatifForm, KriteriaForm, GapForm, PenilaianForm
 def index(request):
     
     return render(request,'index.html')
+
+def dashboard(request):
+    
+    return render(request,'dashboard.html')
 # penilaian
 def penilaian(request):
     alternatif = Alternatif.objects.all()

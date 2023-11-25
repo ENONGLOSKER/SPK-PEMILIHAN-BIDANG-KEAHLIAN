@@ -1,296 +1,144 @@
-{%extends 'base.html'%}
-{%load static%}
-{%block konten%}
-<div id="content">
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>SPK - PEMILIAHN BIDANG KEAHLIAN</title>
+</head>
+<body>
+  <div class="relative h-full w-full bg-white">
+      <div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:38px_38px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
-    <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <!-- header -->
+      <div class="mx-20 py-10 flex gap-5 text-slate-600 bg-transparent relative">
+        <a href="https://github.com/ENONGLOSKER"><ion-icon name="logo-github" class="w-10 h-10 hover:text-indigo-500 hover:drop-shadow-2xl transition duration-300 "></ion-icon></a>
+        <a href="https://www.youtube.com/@el-coder"><ion-icon name="logo-instagram" class="w-10 h-10 hover:text-indigo-500 hover:drop-shadow-2xl transition duration-300 "></ion-icon></a>
+        <img src="{% static 'img/light.png' %}" alt="light" class="absolute top-0 left-48 w-1/2">
+        <div class="bg-blue-400 w-56 h-56 rounded-full absolute top-0 -right-20 blur-3xl opacity-50 overflow-hidden"></div>
+      </div>
+      <div class="mx-auto px-40 text-center w-full  relative">
+        <div class="px-5">
+          <h1 class="font-bold text-6xl leading-tight text-slate-800">Sistem Pendukung Keputusan 
+            <span class="text-indigo-600">Pemilihan</span> Bidang <span class="text-indigo-600">Keahlian</span>
+          </h1>
+          <p class="px-10 mt-5 mb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sunt. Accusamus, quod, reiciendis alias assumenda dignissimos quidem quos dolor iure culpa eius voluptate</p>
 
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-        </button>
-
-        <div class="">
-            <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Dashboard</h1>
+          <a href="{% url 'dashboard:dashboard' %}" target="_blank" class="bg-slate-900 py-4 px-9 rounded-full font-medium text-white hover:bg-indigo-600 hover:drop-shadow-2xl transition duration-300">Get started</a>
+  
         </div>
+      </div>
+  </div>
 
-        <!-- sweet alert -->
-        {%for message in messages%}
-        {% if message.tags == 'success' %}                     
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>                                            
-        <script>
-            var m="{{message}}";
-            swal("Login",m,"success");
-        </script>
-        {%else%}
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>                                            
-        <script>
-            var m="{{message}}";
-            swal("Login",m,"danger");
-        </script>
-        {% endif %}
-        {%endfor%}
+  
+  <!-- section 01 -->
+  <section class=" my-36 relative">
+    <div class="relative">
+      <div class="w-[400px] h-48 bg-blue-400 rounded-full absolute left-[600px] top-32 blur-3xl mix-blend-multiply opacity-50 "></div>
+      <div class="w-[450px] h-60 bg-pink-400 rounded-full absolute top-52 left-1/4 blur-3xl mix-blend-multiply opacity-50"></div>
+    </div>
+    <div class="w-1/3 mx-auto my-12 z-50 ">
+      <span class="flex items-center justify-center text-center font-bold text-lg text-indigo-600">Bidang Keahlian</span>
+      <h2 class="text-center text-4xl font-bold leading">Temukan <span class="text-indigo-600">Passion</span> dan <span class="text-indigo-600"> Bangun Karier </span> Anda
+      </h2>
+    </div>
+    <div class=" flex justify-center items-center space-x-4 relative">
+      <img src="{% static 'img/project-itc-dashboard.png' %}" class="w-80 rounded-lg shadow-lg">
+      <img src="{% static 'img/project-itc-dashboard.png' %}" class="w-80 rounded-lg shadow-lg">
+      <img src="{% static 'img/project-itc-dashboard.png' %}" class="w-80 rounded-lg shadow-lg">
 
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-search fa-fw"></i>
-                </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                    aria-labelledby="searchDropdown">
-                    <form class="form-inline mr-auto w-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search"
-                                aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-            
-            <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter" >45</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Notifikasi
-                                </h6>
-                                <!-- di dalam <div class="dropdown-list"> -->
-                                <!-- {% for notifikasi in notifications %}
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-bell text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">{{ notifikasi.timestamp|date:"F d, Y" }}</div>
-                                        <span class="font-weight-bold">{{ notifikasi.message }}</span>
-                                    </div>
-                                </a>
-                                {% endfor %} -->
-
-                                
-                                <a class="dropdown-item text-center small text-gray-400" href="#">Show All Notifikasi</a>
-                            </div>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">    
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user}}</span>
-                    <img class="img-profile rounded-circle"
-                        src="{%static 'img/logo.png'%}">
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="userDropdown">
-                  
-                    <div class="dropdown-divider"></div>
-                    <form method="post" action="#">
-                        {% csrf_token %}
-                        <button type="submit" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </button>
-                    </form>
-                </div>
-            </li>
-
-        </ul>
-
-    </nav>
-    <!-- End of Topbar -->
-
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
-        
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"></h1>
-        </div>
-
-        <!-- Content data-->
-        <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Anggota</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="#" class="text-gray-800">Jumlah 55 </a></div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Anggota Diverifikasi</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="#" class="text-gray-800">Jumlah 55 </a></div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Program Kerja
-                                </div>
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">56 %</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Notifikasi</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-gray-800">Jumlah 56 </a></div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- {% for data_bidang in data_pengurus_per_bidang %}
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Bidang {{ data_bidang.nama_bidang }}</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <a href="" class="text-gray-800">Pengurus {{ data_bidang.jumlah_pengurus }}</a>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %} -->
-
-
-            
-        </div>
-        <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-9 col-lg-7">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Visualisasi Data </h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                               
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                aria-labelledby="dropdownMenuLink">                                            
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body" >
-                        <canvas id="barChart"></canvas>                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-3 col-lg-5">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Visualisasi Data </h6>
-                        <div class="dropdown no-arrow">                                      
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body" style="padding-bottom: 65px;">
-                        <div class="chart-pie">
-                            <canvas id="piediagram"></canvas>
-                        </div>
-                        <div class="mt-4 text-center small">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- end content data-->
     </div>
 
-</div>
+  </section>
+
+  <!-- section 02 -->
+  <section class=" my-56 bg-gray-50 w-full h-[500px] flex justify-center relative">
+    
+    <div class="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_70%)]"></div>
+    <div class="grid grid-cols-12 mx-10 relative">
+      <img src="{% static 'img/light.png' %}" alt="light" class="absolute ">
+      <div class="col-span-6 mt-16 relative">
+        <div class="mb-14">
+          <h2 class="text-4xl font-bold leading w-4/5 ">Mengapa Bergabung dengan <span class="text-indigo-600">UKM ITC?</span>
+          </h2>
+          <p class="mt-5 leading w-[570px] text-xl">
+            UKM ITC (Information Technology Community) adalah wadah 
+            bagi para mahasiswa yang memiliki minat di bidang 
+            Programming, Jaringan dan IoT, serta Multimedia. Kami 
+            berkomitmen untuk mengembangkan potensi Anda dalam 
+            dunia teknologi informasi dan komunikasi
+          </p>
+        </div>
+
+        <div class="flex space-x-4 font-semibold">
+          <a href="#" class="bg-indigo-600 py-4 px-11 outline-none  rounded-full text-white">Sign up</a>
+          <a href="#" class="py-4 px-11 outline-none border-2 border-indigo-400 rounded-full text-slate-600">Tray now</a>
+        </div>
+      </div>
+      
+      <div class="col-span-6 flex justify-center items-center relative">
+        <div class="">
+          <div class="w-[300px] h-48 bg-blue-400 rounded-full absolute bottom-1/2 left-[300px] blur-2xl"></div>
+          <div class="w-[350px] h-60 bg-pink-400 rounded-full absolute top-1/2 blur-2xl mix-blend-multiply opacity-50"></div>
+        </div>
+
+        <div class=" p-2 relative">
+          <img src="{% static 'img/project-itc-dashboard.png' %}" class="w-[550px] h-[400px] rounded-lg shadow-lg">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- section 03 -->
+  <section class="mb-20">
+    <div class="relative h-full w-full bg-white"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_top,#4f4f4f2e_1px,transparent_1px)] bg-[size:38px_38px] [mask-image:radial-gradient(ellipse_50%_40%_at_50%_90%,#000_70%,transparent_110%)]"></div>
+    <div class="grid grid-cols-12 mx-10">
+      <div class="col-span-6 relative order-2">
+        <div class="mx-10 pe-12">
+          <h2 class="text-4xl font-bold leading pe-3">Cara Bergabung dengan <span class="text-indigo-600">UKM ITC?</span></h2>
+          <div class="mt-5 flex items-center space-x-2">
+            <ion-icon name="checkmark-circle-outline" class="w-20 h-20 text-green-400"></ion-icon>
+            <p class="text-slate-900">Kunjungi Booth Kami di Acara Penerimaan Workshop: Temui kami untuk informasi lebih lanjut tentang UKM ITC dan cara bergabung.
+              </p>
+          </div>
+          <div class="mt-5 flex items-center space-x-2">
+            <ion-icon name="checkmark-circle-outline" class="w-20 h-20 text-green-400"></ion-icon>
+            <p class="text-slate-900">Kunjungi Booth Kami di Acara Penerimaan Workshop: Temui kami untuk informasi lebih lanjut tentang UKM ITC dan cara bergabung.</p>
+          </div>
+          <div class="mt-5 flex items-center space-x-2">
+            <ion-icon name="checkmark-circle-outline" class="w-20 h-20 text-green-400"></ion-icon>
+            <p class="text-slate-900">Kunjungi Booth Kami di Acara Penerimaan Workshop: Temui kami untuk informasi lebih lanjut tentang UKM ITC dan cara bergabung.</p>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="col-span-6 flex justify-center items-center relative order-1">
+        <div class="">
+          <div class="w-[300px] h-48 bg-blue-400 rounded-full absolute bottom-1/2 left-[300px] blur-2xl"></div>
+          <div class="w-[350px] h-60 bg-pink-400 rounded-full absolute top-1/2 blur-2xl mix-blend-multiply opacity-50"></div>
+        </div>
+
+        <div class=" p-2 relative">
+          <img src="{% static 'img/project-itc-dashboard.png' %}" class="w-[550px] h-[400px] rounded-lg shadow-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
 
 
-{%endblock konten%}
+    <!-- position  -->
+    <div class="relative">
+      <div class="w-10 h-10 bg-slate-800 p-2 rounded-full flex fixed bottom-5 right-5 cursor-pointer animate-bounce shadow-lg shadow-indigo-300">
+          <a href="#" class="m-auto">📍</a>
+      </div>
+  </div>
 
-<!-- SCRIPT -->   
-{%block script%}
-
-{%endblock script%}
+  <!-- ionic icon -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
