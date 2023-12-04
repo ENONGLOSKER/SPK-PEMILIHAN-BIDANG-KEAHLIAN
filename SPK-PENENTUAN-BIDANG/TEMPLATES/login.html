@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>SPK - PEMILIAHN BIDANG KEAHLIAN</title>
+</head>
+<body class="bg-slate-50">
+    <div class="container flex justify-center items-center w-full h-screen mx-auto">
+        <div class="flex justify-center  flex-col items-center w-80 h-96 bg-white rounded-md shadow-lg py-56">
+            <img src="{% static '/img/logo.png' %}" class="w-16 h-16 mt-3">
+            <h1 class="text-center font-bold text-lg text-indigo-500 mb-4">Sign in</h1>
+            <p class="text-center text-sm text-slate-400 mx-3">Lorem ipsum dolor sit amet consectetur adipisicing elit Nemo architecto</p>
+            <form method="POST" class="flex flex-col space-y-4 my-4 py-5">
+                {%csrf_token%}
+                <input class="py-2 px-3 rounded-sm w-60 bg-slate-100" type="text" placeholder="Username" id="username" name="username">
+                <input class="py-2 px-3 rounded-sm w-60 bg-slate-100" type="password" placeholder="Password" id="password" name="password">
+                <br>
+                
+                <button class="bg-indigo-500 text-white font-semibold mt-10 py-2 px-3 rounded-sm" type="submit">Login</button>
+            </form>
+            <p class="mb-4 -mt-4 text-sm text-slate-400">Kembali Ke halaman <a href="{% url 'dashboard:index' %}" class="text-indigo-400">Utama</a></p>
+        </div> 
+    </div>
+
+  <!-- ionic icon -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

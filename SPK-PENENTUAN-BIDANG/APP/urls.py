@@ -3,6 +3,9 @@ from .import views
 app_name="APP"
 
 urlpatterns = [
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
+    
     path('', views.index, name='index'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('alternatif/', views.alternatif, name='alternatif'),

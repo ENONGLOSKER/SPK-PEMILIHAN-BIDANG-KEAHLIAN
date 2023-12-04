@@ -1,19 +1,50 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Alternatif, Kriteria, Gap, Penilaian
 from .forms import AlternatifForm, KriteriaForm, GapForm, PenilaianForm
+import pandas as pd
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Selamat, Login Berhasil!')
+            return redirect ('dashboard:dashboard')
+        else:
+            if user is authenticate:
+                login(request, user)
+                messages.success(request, 'Selamat, Login Berhasil!')
+                redirect ('dashboard:dashboard')
+            return redirect('dashboard:login')
+    return render(request, 'login.html')
+
+def user_logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('dashboard:login')
 
 def index(request):
     
     return render(request,'index.html')
 
+@login_required
 def dashboard(request):
     
     return render(request,'dashboard.html')
 # penilaian
+@login_required
 def penilaian(request):
     alternatif = Alternatif.objects.all()
     kriterias = Kriteria.objects.all()
     penilaians = Penilaian.objects.all()
+    
 
     hasil_perhitungan = {}
     for kriteria in kriterias:
@@ -118,7 +149,7 @@ def penilaian(request):
     }
     
     return render(request,'penilaian.html',context)
-
+@login_required
 def create_penilaian(request):
     if request.method == 'POST':
         form = PenilaianForm(request.POST)
@@ -129,7 +160,7 @@ def create_penilaian(request):
         form = PenilaianForm()
 
     return render(request, 'penilaian_create.html', {'form': form})
-
+@login_required
 def update_penilaian(request, pk):
     penilaian = get_object_or_404(Penilaian, pk=pk)
 
@@ -142,18 +173,22 @@ def update_penilaian(request, pk):
         form = PenilaianForm(instance=penilaian)
 
     return render(request, 'penilaian_create.html', {'form': form, 'penilaian': penilaian})
-
+@login_required
 def delete_penilaian(request, pk):
     penilaian = get_object_or_404(Penilaian, pk=pk)
     penilaian.delete()
     return redirect('dashboard:penilaian')
-
+@login_required
 # alternatif
 def alternatif(request):
 
     datas = Alternatif.objects.all()
+    print( datas)
+    data= pd.DataFrame(datas)
+    print( data [0])                        
+    print( data)                        
     return render(request,'alternatif.html', {'datas':datas})
-
+@login_required
 def create_alternatif(request):
     if request.method == 'POST':
         form = AlternatifForm(request.POST)
@@ -164,7 +199,7 @@ def create_alternatif(request):
         form = AlternatifForm()
 
     return render(request, 'alternatif_create.html', {'form': form})
-
+@login_required
 def update_alternatif(request, pk):
     alternatif = get_object_or_404(Alternatif, pk=pk)
 
@@ -177,7 +212,7 @@ def update_alternatif(request, pk):
         form = AlternatifForm(instance=alternatif)
 
     return render(request, 'alternatif_create.html', {'form': form, 'alternatif': alternatif})
-
+@login_required
 def delete_alternatif(request, pk):
     alternatif = get_object_or_404(Alternatif, pk=pk)
     alternatif.delete()
@@ -185,11 +220,12 @@ def delete_alternatif(request, pk):
 
 
 # CRITERIA
+@login_required
 def kriteria(request):
 
     datas = Kriteria.objects.all()
     return render(request,'kriteria.html', {'datas':datas})
-
+@login_required
 def create_kriteria(request):
     if request.method == 'POST':
         form = KriteriaForm(request.POST)
@@ -200,7 +236,7 @@ def create_kriteria(request):
         form = KriteriaForm()
 
     return render(request, 'kriteria_create.html', {'form': form})
-
+@login_required
 def update_kriteria(request, pk):
     kriteria = get_object_or_404(Kriteria, pk=pk)
 
@@ -213,18 +249,19 @@ def update_kriteria(request, pk):
         form = KriteriaForm(instance=kriteria)
 
     return render(request, 'kriteria_create.html', {'form': form, 'kriteria': kriteria})
-
+@login_required
 def delete_kriteria(request, pk):
     kriteria = get_object_or_404(Kriteria, pk=pk)
     kriteria.delete()
     return redirect('dashboard:kriteria')
 
 # GAP
+@login_required
 def gap(request):
 
     datas = Gap.objects.all()
     return render(request,'gap.html', {'datas':datas})
-
+@login_required
 def create_gap(request):
     if request.method == 'POST':
         form = GapForm(request.POST)
@@ -235,7 +272,7 @@ def create_gap(request):
         form = GapForm()
 
     return render(request, 'gap_create.html', {'form': form})
-
+@login_required
 def update_gap(request, pk):
     gap = get_object_or_404(Gap, pk=pk)
 
@@ -248,7 +285,7 @@ def update_gap(request, pk):
         form = GapForm(instance=gap)
 
     return render(request, 'gap_create.html', {'form': form, 'gap': gap})
-
+@login_required
 def delete_gap(request, pk):
     gap = get_object_or_404(Gap, pk=pk)
     gap.delete()

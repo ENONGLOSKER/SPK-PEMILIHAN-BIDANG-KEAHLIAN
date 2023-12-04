@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <!-- Favicons -->
     <link href="{%static 'img/logo.png'%}" rel="icon">
+    
 
     <title>Dashboard -SPK</title>
 
@@ -58,7 +59,7 @@
                 <div class="modal-body">Jika anda ingin keluar tekan Ya!</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="">Ya</a>
+                    <a class="btn btn-primary" href="{% url 'dashboard:logout' %}">Ya</a>
                 </div>
             </div>
         </div>

@@ -95,7 +95,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">    
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user}}</span>
                     <img class="img-profile rounded-circle"
@@ -106,7 +106,7 @@
                     aria-labelledby="userDropdown">
                   
                     <div class="dropdown-divider"></div>
-                    <form method="post" action="#">
+                    <form method="post" action="{% url 'dashboard:logout' %}">
                         {% csrf_token %}
                         <button type="submit" class="dropdown-item">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -254,32 +254,33 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body" >
-                        <canvas id="barChart"></canvas>                        
+                        <div id="container" style="width:100%; height:400px;"></div>                       
                     </div>
                 </div>
             </div>
 
-            <!-- Pie Chart -->
             <div class="col-xl-3 col-lg-5">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Visualisasi Data </h6>
-                        <div class="dropdown no-arrow">                                      
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                               
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                aria-labelledby="dropdownMenuLink">                                            
+                            </div>
                         </div>
                     </div>
                     <!-- Card Body -->
-                    <div class="card-body" style="padding-bottom: 65px;">
-                        <div class="chart-pie">
-                            <canvas id="piediagram"></canvas>
-                        </div>
-                        <div class="mt-4 text-center small">
-                            
-                        </div>
+                    <div class="card-body" >
+                        <div id="container" style="width:100%; height:400px;"></div>                       
                     </div>
                 </div>
             </div>
+
         </div>
 
         <!-- end content data-->
@@ -290,7 +291,52 @@
 
 {%endblock konten%}
 
+
 <!-- SCRIPT -->   
 {%block script%}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }, {
+                name: 'el',
+                data: [10, 15, 20]
+            }]
+        });
+    });
+
+    let chart; // globally available
+    document.addEventListener('DOMContentLoaded', function() {
+        chart = Highcharts.stockChart('container', {
+            rangeSelector: {
+                selected: 1
+            },
+            series: [{
+                name: 'USD to EUR',
+                data: usdtoeur // predefined JavaScript array
+           }]
+       });
+    });
+</script>
 
 {%endblock script%}
