@@ -237,7 +237,7 @@
         <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-9 col-lg-7">
+            <div class="col-xl-6 col-lg-6">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div
@@ -259,7 +259,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-lg-5">
+            <div class="col-xl-6 col-lg-6">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div
@@ -276,7 +276,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body" >
-                        <div id="container" style="width:100%; height:400px;"></div>                       
+                        <div id="containerPy" style="width:100%; height:400px;"></div>                       
                     </div>
                 </div>
             </div>
@@ -302,7 +302,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Fruit Consumption'
+                text: 'Visualisasi Rekomendasi'
             },
             xAxis: {
                 categories: ['Apples', 'Bananas', 'Oranges']
@@ -328,6 +328,50 @@
     let chart; // globally available
     document.addEventListener('DOMContentLoaded', function() {
         chart = Highcharts.stockChart('container', {
+            rangeSelector: {
+                selected: 1
+            },
+            series: [{
+                name: 'USD to EUR',
+                data: usdtoeur // predefined JavaScript array
+           }]
+       });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('containerPy', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Visualisasi Rekomendasi'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }, {
+                name: 'el',
+                data: [10, 15, 20]
+            }]
+        });
+    });
+
+    let chartpy; // globally available
+    document.addEventListener('DOMContentLoaded', function() {
+        chartpy = Highcharts.stockChart('containerPy', {
             rangeSelector: {
                 selected: 1
             },
